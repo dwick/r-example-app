@@ -1,0 +1,23 @@
+.display-flex {
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+}
+
+.flex-direction(@direction) {
+  -webkit-flex-direction: @direction;
+          flex-direction: @direction;
+}
+
+.flex(@grow, @shrink, @minHeight) {
+  -webkit-box-flex: @grow @shrink @minHeight;
+  -webkit-flex: @grow @shrink @minHeight;
+          flex: @grow @shrink @minHeight;
+ }
+
+.flex-wrap(@value) {
+  -webkit-flex-wrap: @value;
+          flex-wrap: @value;
+}

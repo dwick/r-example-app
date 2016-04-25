@@ -1,0 +1,120 @@
+@import '~less/variables.less';
+@import '~less/mixins/buttons.less';
+@import '~less/mixins/hdpi-bg-image.less';
+
+.LandingPage {
+  &__masthead {
+    .hdpi-bg-image(
+      @1x: url(/img/tiled-icons.png),
+      @2x: url(/img/tiled-icons@2x.png),
+      @2x-bg-size: 160px 80px,
+      @bg-repeat: repeat,
+    );
+    background-color: #6093bf;
+    padding-top: 60px;
+  }
+
+  &__title {
+    color: @gray-light;
+    font-weight: normal;
+    line-height: 40px;
+    text-shadow: 0 1px 1px rgba(0, 0, 0, 0.25);
+    margin-top: 0;
+  }
+
+  &__call-to-action {
+    display: block;
+    font-weight: bold;
+
+    .button-variant(
+      @color: @gray-lighter,
+      @background: #ff9e48,
+      @border: #ff8415,
+    );
+
+    .button-size(
+      @padding-vertical: 20px,
+      @padding-horizontal: 40px,
+      @font-size: @font-size-h2,
+      @line-height: @headings-line-height,
+      @border-radius: @border-radius-base,
+    );
+  }
+
+  &__sales-contact {
+    color: #174e64;
+
+    &:active,
+    &:hover {
+      color: #174e64;
+    }
+  }
+
+  &__illustration {
+    .hdpi-bg-image(
+      @1x: url(/img/banner-illustration.png),
+      @2x: url(/img/banner-illustration@2x.png),
+      @2x-bg-size: 1330px 200px,
+    );
+    background-position: center top;
+    height: 200px;
+    position: relative;
+    margin-bottom: 90px;
+  }
+
+  &__air-dancer-snoo-graphic {
+    .hdpi-bg-image(
+      @1x: url(/img/air-dancer-snoo.png),
+      @2x: url(/img/air-dancer-snoo@2x.png),
+      @2x-bg-size: 79px 180px,
+    );
+    width: 79px;
+    height: 180px;
+    position: absolute;
+    right: 25%;
+    bottom: 30px;
+  }
+
+  &__genuine-engagement-graphic {
+    .hdpi-bg-image(
+      @1x: url(/img/genuine-engagement.png),
+      @2x: url(/img/genuine-engagement@2x.png),
+      @2x-bg-size: 319px 120px,
+    );
+    width: 319px;
+    height: 120px;
+    position: absolute;
+    right: 50%;
+    bottom: 10px;
+    margin-right: 90px;
+  }
+
+  &__flexible-platform-graphic {
+    .hdpi-bg-image(
+      @1x: url(/img/flexible-platform.png),
+      @2x: url(/img/flexible-platform@2x.png),
+      @2x-bg-size: 358px 112px,
+    );
+    width: 358px;
+    height: 112px;
+    position: absolute;
+    left: 50%;
+    bottom: 10px;
+    margin-left: 90px;
+  }
+
+  &__passionate-communities-graphic {
+    .hdpi-bg-image(
+      @1x: url(/img/passionate-communities.png),
+      @2x: url(/img/passionate-communities@2x.png),
+      @2x-bg-size: 198px 179px,
+    );
+    width: 198px;
+    height: 179px;
+    position: absolute;
+    left: 50%;
+    bottom: -90px;
+    margin-left: -99px;
+    z-index: 1;
+  }
+}
