@@ -1,0 +1,48 @@
+.LandingPage {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #FF4500;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+
+  &__box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  &__title {
+    font-size: 40px;
+    line-height: 1.5;
+    color: #FFF;
+    text-align: center;
+    letter-spacing: 5.5;
+  }
+
+  &__subtitle {
+    font-size: 16px;
+    line-height: 1.5;
+    color: #FFF;
+    text-align: center;
+    letter-spacing: 1.5;
+  }
+
+  &__bold {
+    font-weight: bold;
+  }
+
+  &__input {
+    width: 240px;
+    height: 32px;
+    margin-top: 22px;
+    text-align: center;
+
+    & ~ & {
+      margin-top: 16px;
+    }
+  }
+}
