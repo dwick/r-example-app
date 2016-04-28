@@ -3,29 +3,22 @@ import React from 'react';
 import LandingPage from './components/landingpage/LandingPage';
 import { Anchor, UrlSync } from '@r/platform/components';
 import { PageSelector, Page } from '@r/platform/page';
-import { connect } from 'react-redux';
-import { createSelector } from 'reselect';
 
-const T = React.PropTypes;
-
-export class App extends React.Component {
-  static propTypes = {
-    pageType: T.string.isRequired,
-  };
-
+export default class App extends React.Component {
   render() {
     return (
       <div>
-        { this.props.pageType == '%%landingpage' ? <LandingPage /> : null }
+        <PageSelector>
+          <Page url="/">
+            <LandingPage />
+          </Page>
+          <Page url="/r/:subreddit">
+            <div>Hello Buddy!</div>
+          </Page>
+        </PageSelector>
         <UrlSync/>
       </div>
     );
   }
 }
 
-const selector = createSelector(
-  state => state.platform.currentPage.page,
-  (pageType) => ({ pageType })
-);
-
-export default connect(selector)(App);
