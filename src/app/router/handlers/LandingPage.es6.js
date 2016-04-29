@@ -2,6 +2,9 @@ import { BaseHandler, METHODS } from '@r/platform/router';
 import * as platformActions from '@r/platform/actions';
 
 export default class LandingPage extends BaseHandler {
-  //empty route
-  async [METHODS.GET]() {}
+  async [METHODS.GET](dispatch, getState, utils) {
+    if(getState().session.isValid) {
+      return dispatch(platformActions.setPage('/dashboard'));
+    }
+  }
 }

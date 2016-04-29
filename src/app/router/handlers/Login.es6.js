@@ -15,9 +15,9 @@ export default class Login extends BaseHandler {
     try {
       const newSession = await Session.fromLogin(username, password);
       dispatch(sessionActions.setSession(newSession));
-      dispatch(platformActions.setPage('/r/signedintest'));
+      dispatch(platformActions.setPage('/dashboard'));
     } catch (e) {
-
+      // TODO: Do something on login failure
     }
   }
 }
