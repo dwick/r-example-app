@@ -11,16 +11,16 @@ const renderSubreddit = data => (
     key={ data.id }
     style={ {
       backgroundColor: data.key_color ? data.key_color : null,
-      backgroundImage: data.banner_img ? `url(${data.banner_img})` : null,
+      backgroundImage: data.bannerImage ? `url(${data.bannerImage})` : null,
     } }
     href={ `${data.url}edit` }
   >
     <div className='Dashboard__subredditTop'>
       <div className='Dashboard__subredditHeader'>
-        <div className='Dashboard__subredditName'>{ `r/${data.display_name}` }</div>
+        <div className='Dashboard__subredditName'>{ `r/${data.displayName}` }</div>
         <div className='Dashboard__subredditTitle'>{ data.title }</div>
       </div>
-      <div className='Dashboard__subredditDescription'>{ data.public_description }</div>
+      <div className='Dashboard__subredditDescription'>{ data.publicDescription }</div>
     </div>
   </a>
 );
@@ -35,9 +35,6 @@ export class Dashboard extends React.Component {
 
     return (
       <div className='Dashboard'>
-        <div className='Dashboard__header'>
-          DASHBOARD HEADER
-        </div>
         <div className='Dashboard__subredditsContainer'>
           { subreddits.map(renderSubreddit) }
         </div>

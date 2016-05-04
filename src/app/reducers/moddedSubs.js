@@ -1,17 +1,21 @@
+import merge from '@r/platform/merge';
 import * as moddedSubActions from '../actions/moddedSubs';
 
-const DEFAULT = {};
+const DEFAULT = {
+  ids: [],
+  data: {}
+};
 
 export default function(state=DEFAULT, action={}) {
   switch(action.type) {
     case moddedSubActions.SET_MOD_SUBS_IDS: {
       const { ids } = action.payload;
-      return Object.assign({}, state, { ids });
+      return merge(state, { ids });
     }
 
     case moddedSubActions.SET_MOD_SUBS_DATA: {
       const { data } = action.payload;
-      return Object.assign({}, state, { data });
+      return merge(state, { data });
     }
 
     default: return state;
