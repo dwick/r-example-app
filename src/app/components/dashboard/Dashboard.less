@@ -1,0 +1,76 @@
+@import '../../common/assets/less/variables.less';
+
+.Dashboard {
+  &__header {
+    height: 50px;
+  }
+
+  &__subredditsContainer {
+    padding: 2 * @grid-size;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+
+  &__subreddit {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 2 * @grid-size;
+    width: 200px;
+    margin-right: 2 * @grid-size;
+    margin-bottom: 2 * @grid-size;
+    cursor: pointer;
+    background-size: cover;
+    background-repeat: no-repeat;
+    color: @white;
+    background-color: @blue;
+    text-decoration: none;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+    transition: box-shadow 0.2s ease-in-out;
+
+    &:visited {
+      color: @white;
+    }
+
+    &:hover {
+      box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+    }
+  }
+
+  &__subredditHeader {
+    margin-top: -2 * @grid-size;
+    margin-left: -2 * @grid-size;
+    margin-right: -2 * @grid-size;
+    margin-bottom: 2 * @grid-size;
+    padding: 2 * @grid-size;
+    background-color: rgba(0, 0, 0, 0.3);
+  }
+
+  &__subredditName {
+    font-size: 22px;
+    letter-spacing: 1.5;
+    line-height: 1.5;
+    width: 100%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  &__subredditTitle {
+    font-size: 12px;
+    line-height: 1.2;
+    margin-bottom: 2 * @grid-size;
+  }
+
+  &__subredditDescription {
+    font-size: 14px;
+    line-height: 1.2;
+  }
+
+  &__subredditPermissions {
+    margin-top: 2 * @grid-size;
+    font-size: 12px;
+    line-height: 1.5;
+  }
+}
