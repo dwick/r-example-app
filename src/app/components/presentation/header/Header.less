@@ -1,0 +1,21 @@
+@import '../../../common/assets/less/variables.less';
+
+.Header {
+  display: flex;
+  align-items: center;
+  background-color: @orangered;
+
+  &__logo {
+    margin-left: 2 * @grid-size;
+    font-size: 24px;
+    line-height: 1.5;
+    a {
+      text-decoration: none;
+      color: @white;
+      &:hover {
+        color: darken(@white, 10%)
+      }
+    }
+    
+  }
+}
