@@ -1,5 +1,6 @@
 import superagent from 'superagent';
 import { btoa } from 'Base64';
+import { optionsWithAuth } from '@r/api-client';
 
 const fetchLogin = (username, password) => new Promise((resolve, reject) => {
   superagent
@@ -41,6 +42,10 @@ export default class Session {
 
   get isValid() {
     return (new Date()).getTime() < this.expires;
+  }
+
+  get apiAuth() {
+    return optionsWithAuth(this.accessToken);
   }
 
   async refresh() {
