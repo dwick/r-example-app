@@ -1,0 +1,410 @@
+@font-face {
+	font-family: "icons-0.6398081928491592";
+	src: url('../fonts/icons-0.6398081928491592.eot');
+	src: url('../fonts/icons-0.6398081928491592.eot?#iefix') format('eot'),
+		url('../fonts/icons-0.6398081928491592.woff') format('woff'),
+		url('../fonts/icons-0.6398081928491592.ttf') format('truetype'),
+		url('../fonts/icons-0.6398081928491592.svg#icons-0.6398081928491592') format('svg');
+}
+
+.icon-base-pseudo {
+	font-family: "icons-0.6398081928491592";
+		-webkit-font-smoothing: antialiased;
+		-moz-osx-font-smoothing: grayscale;
+	font-style: normal;
+	font-variant: normal;
+	font-weight: normal;
+	text-decoration: none;
+	text-transform: none;
+}
+
+.icon-char(@filename) {
+	@bar-chart: "\EA01";
+	@caron-circled: "\EA02";
+	@caron: "\EA03";
+	@check-circled: "\EA04";
+	@check: "\EA05";
+	@circle: "\EA06";
+	@clear: "\EA07";
+	@comment: "\EA08";
+	@comments-circled: "\EA09";
+	@comments: "\EA0A";
+	@compact: "\EA0B";
+	@controversial: "\EA0C";
+	@crown-circled: "\EA0D";
+	@crown: "\EA0E";
+	@delete_remove: "\EA0F";
+	@desktop: "\EA10";
+	@downvote-circled: "\EA11";
+	@downvote: "\EA12";
+	@eye: "\EA13";
+	@flag-circled: "\EA14";
+	@flag: "\EA15";
+	@follow: "\EA16";
+	@gallery_squares: "\EA17";
+	@gold: "\EA18";
+	@goldcircled: "\EA19";
+	@header-18plus: "\EA1A";
+	@header_banned: "\EA1B";
+	@header_gold: "\EA1C";
+	@header_locked: "\EA1D";
+	@header_private: "\EA1E";
+	@header_quarantine: "\EA1F";
+	@header_user: "\EA20";
+	@history: "\EA21";
+	@hot: "\EA22";
+	@info-circled: "\EA23";
+	@info: "\EA24";
+	@karma-circled: "\EA25";
+	@karma: "\EA26";
+	@law-circled: "\EA27";
+	@law: "\EA28";
+	@link-circled: "\EA29";
+	@link: "\EA2A";
+	@linkout: "\EA2B";
+	@lock: "\EA2C";
+	@menu: "\EA2D";
+	@message: "\EA2E";
+	@mod: "\EA2F";
+	@nav-arrowback: "\EA30";
+	@nav-arrowback2: "\EA31";
+	@nav-arrowdown: "\EA32";
+	@nav-arrowforward: "\EA33";
+	@nav-arrowup: "\EA34";
+	@nav-close: "\EA35";
+	@new: "\EA36";
+	@nsfw: "\EA37";
+	@op: "\EA38";
+	@play-circled: "\EA39";
+	@play: "\EA3A";
+	@play_triangle: "\EA3B";
+	@post-circled: "\EA3C";
+	@post: "\EA3D";
+	@post_edit: "\EA3E";
+	@r-circled: "\EA3F";
+	@r: "\EA40";
+	@reply-circled: "\EA41";
+	@reply: "\EA42";
+	@reply2: "\EA43";
+	@rules: "\EA44";
+	@save-circled: "\EA45";
+	@save: "\EA46";
+	@search-circled: "\EA47";
+	@search: "\EA48";
+	@seashells-circled: "\EA49";
+	@seashells: "\EA4A";
+	@settings-circled: "\EA4B";
+	@settings: "\EA4C";
+	@share-circled: "\EA4D";
+	@share: "\EA4E";
+	@snoo-circled: "\EA4F";
+	@snoo: "\EA50";
+	@snoo_logo_20: "\EA51";
+	@snoosilhouette: "\EA52";
+	@sticky: "\EA53";
+	@text-circled: "\EA54";
+	@text: "\EA55";
+	@twirly-circled: "\EA56";
+	@twirly: "\EA57";
+	@unsave-circled: "\EA58";
+	@unsave: "\EA59";
+	@upvote-circled: "\EA5A";
+	@upvote: "\EA5B";
+	@user-account: "\EA5C";
+	@x-circled: "\EA5D";
+	@x: "\EA5E";
+	
+	content: @@filename;
+}
+
+.icon(@filename, @insert: before) {
+	@pseudo-selector: ~":@{insert}";
+
+	&@{pseudo-selector} {
+		&:extend(.icon-base-pseudo);
+		.icon-char(@filename);
+	}
+}
+
+.icon-bar-chart {
+	.icon(bar-chart);
+}
+.icon-caron-circled {
+	.icon(caron-circled);
+}
+.icon-caron {
+	.icon(caron);
+}
+.icon-check-circled {
+	.icon(check-circled);
+}
+.icon-check {
+	.icon(check);
+}
+.icon-circle {
+	.icon(circle);
+}
+.icon-clear {
+	.icon(clear);
+}
+.icon-comment {
+	.icon(comment);
+}
+.icon-comments-circled {
+	.icon(comments-circled);
+}
+.icon-comments {
+	.icon(comments);
+}
+.icon-compact {
+	.icon(compact);
+}
+.icon-controversial {
+	.icon(controversial);
+}
+.icon-crown-circled {
+	.icon(crown-circled);
+}
+.icon-crown {
+	.icon(crown);
+}
+.icon-delete_remove {
+	.icon(delete_remove);
+}
+.icon-desktop {
+	.icon(desktop);
+}
+.icon-downvote-circled {
+	.icon(downvote-circled);
+}
+.icon-downvote {
+	.icon(downvote);
+}
+.icon-eye {
+	.icon(eye);
+}
+.icon-flag-circled {
+	.icon(flag-circled);
+}
+.icon-flag {
+	.icon(flag);
+}
+.icon-follow {
+	.icon(follow);
+}
+.icon-gallery_squares {
+	.icon(gallery_squares);
+}
+.icon-gold {
+	.icon(gold);
+}
+.icon-goldcircled {
+	.icon(goldcircled);
+}
+.icon-header-18plus {
+	.icon(header-18plus);
+}
+.icon-header_banned {
+	.icon(header_banned);
+}
+.icon-header_gold {
+	.icon(header_gold);
+}
+.icon-header_locked {
+	.icon(header_locked);
+}
+.icon-header_private {
+	.icon(header_private);
+}
+.icon-header_quarantine {
+	.icon(header_quarantine);
+}
+.icon-header_user {
+	.icon(header_user);
+}
+.icon-history {
+	.icon(history);
+}
+.icon-hot {
+	.icon(hot);
+}
+.icon-info-circled {
+	.icon(info-circled);
+}
+.icon-info {
+	.icon(info);
+}
+.icon-karma-circled {
+	.icon(karma-circled);
+}
+.icon-karma {
+	.icon(karma);
+}
+.icon-law-circled {
+	.icon(law-circled);
+}
+.icon-law {
+	.icon(law);
+}
+.icon-link-circled {
+	.icon(link-circled);
+}
+.icon-link {
+	.icon(link);
+}
+.icon-linkout {
+	.icon(linkout);
+}
+.icon-lock {
+	.icon(lock);
+}
+.icon-menu {
+	.icon(menu);
+}
+.icon-message {
+	.icon(message);
+}
+.icon-mod {
+	.icon(mod);
+}
+.icon-nav-arrowback {
+	.icon(nav-arrowback);
+}
+.icon-nav-arrowback2 {
+	.icon(nav-arrowback2);
+}
+.icon-nav-arrowdown {
+	.icon(nav-arrowdown);
+}
+.icon-nav-arrowforward {
+	.icon(nav-arrowforward);
+}
+.icon-nav-arrowup {
+	.icon(nav-arrowup);
+}
+.icon-nav-close {
+	.icon(nav-close);
+}
+.icon-new {
+	.icon(new);
+}
+.icon-nsfw {
+	.icon(nsfw);
+}
+.icon-op {
+	.icon(op);
+}
+.icon-play-circled {
+	.icon(play-circled);
+}
+.icon-play {
+	.icon(play);
+}
+.icon-play_triangle {
+	.icon(play_triangle);
+}
+.icon-post-circled {
+	.icon(post-circled);
+}
+.icon-post {
+	.icon(post);
+}
+.icon-post_edit {
+	.icon(post_edit);
+}
+.icon-r-circled {
+	.icon(r-circled);
+}
+.icon-r {
+	.icon(r);
+}
+.icon-reply-circled {
+	.icon(reply-circled);
+}
+.icon-reply {
+	.icon(reply);
+}
+.icon-reply2 {
+	.icon(reply2);
+}
+.icon-rules {
+	.icon(rules);
+}
+.icon-save-circled {
+	.icon(save-circled);
+}
+.icon-save {
+	.icon(save);
+}
+.icon-search-circled {
+	.icon(search-circled);
+}
+.icon-search {
+	.icon(search);
+}
+.icon-seashells-circled {
+	.icon(seashells-circled);
+}
+.icon-seashells {
+	.icon(seashells);
+}
+.icon-settings-circled {
+	.icon(settings-circled);
+}
+.icon-settings {
+	.icon(settings);
+}
+.icon-share-circled {
+	.icon(share-circled);
+}
+.icon-share {
+	.icon(share);
+}
+.icon-snoo-circled {
+	.icon(snoo-circled);
+}
+.icon-snoo {
+	.icon(snoo);
+}
+.icon-snoo_logo_20 {
+	.icon(snoo_logo_20);
+}
+.icon-snoosilhouette {
+	.icon(snoosilhouette);
+}
+.icon-sticky {
+	.icon(sticky);
+}
+.icon-text-circled {
+	.icon(text-circled);
+}
+.icon-text {
+	.icon(text);
+}
+.icon-twirly-circled {
+	.icon(twirly-circled);
+}
+.icon-twirly {
+	.icon(twirly);
+}
+.icon-unsave-circled {
+	.icon(unsave-circled);
+}
+.icon-unsave {
+	.icon(unsave);
+}
+.icon-upvote-circled {
+	.icon(upvote-circled);
+}
+.icon-upvote {
+	.icon(upvote);
+}
+.icon-user-account {
+	.icon(user-account);
+}
+.icon-x-circled {
+	.icon(x-circled);
+}
+.icon-x {
+	.icon(x);
+}
