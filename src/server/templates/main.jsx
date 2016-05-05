@@ -12,8 +12,7 @@ export default function(data, store) {
         <meta name="viewport" content="width=device-width, initial-scale=1"/>
         <script
           id='data'
-          type='application/json'
-          dangerouslySetInnerHTML={ { __html: JSON.stringify(data) } }
+          dangerouslySetInnerHTML={ { __html: `window.___r = ${ JSON.stringify(data) }` } }
         ></script>
         <link rel='stylesheet' href='/Client.css'/>
       </head>
