@@ -1,0 +1,176 @@
+@import '../../../common/assets/less/variables.less';
+
+.EditSubreddit {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: @pale-grey;
+
+  &__nav {
+    position: absolute;
+    top: 0;
+    left: @grid-size;
+    bottom: 0;
+    width: 250px;
+    border-right: 1px solid @pale-grey;
+    border-left: 1px solid @pale-grey;
+    background-color: @white;
+    overflow-y: auto;
+  }
+
+  &__navRow {
+    display: block;
+    height: 50px;
+    width: 100%;
+    padding: 2 * @grid-size;
+    box-sizing: border-box;
+    border-bottom: 1px solid @pale-grey;
+    font-size: 16px;
+    line-height: 18px;
+    color: @neutral;
+    cursor: pointer;
+    text-decoration: none;
+
+    &:hover {
+      &, &:visited {
+        color: @grey-text;
+      }
+    }
+
+    &:visited {
+      color: @neutral;
+    }
+
+    &.m-selected {
+      &, &:hover {
+        color: @white;
+        background-color: @mango;
+      }
+    }
+  }
+
+  &__content {
+    position: absolute;
+    top: 0;
+    left: (@grid-size) + 252;
+    bottom: 0;
+    right: 0;
+    margin: 0;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    background-color: @white;
+  }
+
+  &__contentTop,
+  &__contentBottom {
+    padding: 2 * @grid-size;
+  }
+
+  &__contentBottom {
+    border-top: 1px solid @pale-grey;
+  }
+
+  &__submit {
+    float: right;
+  }
+
+  &__page {
+    display: none;
+
+    &.m-show {
+      display:  block;
+    }
+  }
+
+  &__box {
+    margin-bottom: 8 * @grid-size;
+  }
+
+  &__header {
+    font-size: 2 * @grid-size;
+    line-height: 1.5;
+    color: @orangered;
+    margin-bottom: @grid-size;
+  }
+
+  &__input {
+    height: 42px;
+    width: 600px;
+    max-width: 100%;
+  }
+
+  &__textarea {
+    height: 200px;
+    width: 600px;
+    max-width: 100%;
+  }
+
+  &__typeSelector {
+    color: @grey-text;
+    font-size: 14px;
+    line-height: 1.5;
+  }
+
+  &__typeSelectorRadioCol {
+    padding-right: 4 * @grid-size;
+  }
+
+  &__radioButton {
+    color: @orangered;
+
+    &, & ~ label {
+      cursor: pointer;
+    }
+
+    & ~ label {
+      padding-left: @grid-size;
+      padding-right: 2 * @grid-size;
+    }
+  }
+
+  &__typeSelectorTextCol,
+  &__radioGridTextCol {
+    color: @neutral;
+  }
+
+  &__radioGrid {
+    font-size: 14px;
+    line-height: 1.5;
+    margin-top: 2 * @grid-size;
+  }
+
+  &__radioGridTextCol {
+    padding-right: 4 * @grid-size;
+  }
+
+  &__radioGridRadioCol {
+    color: @grey-text;
+  }
+
+  &__miniHeader {
+    font-size: 14px;
+    line-height: 1.5;
+    color: @grey-text;
+    margin-top: @grid-size;
+  }
+
+  &__checkboxRow {
+    font-size: 14px;
+    line-height: 1.5;
+    color: @grey-text;
+  }
+
+  &__checkbox {
+    &, & ~ label {
+      cursor: pointer;
+    }
+
+    & ~ label {
+      padding-left: @grid-size;
+    }
+  }
+}
