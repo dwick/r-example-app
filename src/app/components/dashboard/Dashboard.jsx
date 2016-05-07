@@ -13,7 +13,7 @@ const renderSubreddit = data => (
       backgroundColor: data.key_color ? data.key_color : null,
       backgroundImage: data.bannerImage ? `url(${data.bannerImage})` : null,
     } }
-    href={ `${data.url}edit` }
+    href={ `${data.url}${data.name}/edit` }
   >
     <div className='Dashboard__subredditTop'>
       <div className='Dashboard__subredditHeader'>

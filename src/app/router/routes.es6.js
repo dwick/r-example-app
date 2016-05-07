@@ -8,6 +8,6 @@ export default [
   ['/', LandingPage],
   ['/dashboard', Dashboard],
   ['/r/:subredditName', Frontpage],
-  ['/r/:subredditId/edit', EditSubreddit],
+  ['/r/:subredditName/:subredditUUID/edit', EditSubreddit],
   ['/login', Login],
 ];

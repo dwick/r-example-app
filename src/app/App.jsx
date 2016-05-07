@@ -22,7 +22,7 @@ export default class App extends React.Component {
             component={ pageData => <div>Hello Buddy</div> }
           />
           <Page
-            url='/r/:subreddit/edit'
+            url='/r/:subreddit/:uuid/edit'
             component={ pageData => <EditSubreddit /> }
           />
           <Page
