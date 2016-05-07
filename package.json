@@ -7,7 +7,7 @@
     "server": "node ./bin/ProductionServer.js"
   },
   "dependencies": {
-    "@r/api-client": "~3.7.0",
+    "@r/api-client": "git://github.com/reddit/node-api-client.git#3X",
     "@r/build": "0.0.12",
     "@r/middleware": "0.5.3",
     "@r/platform": "0.0.27",
