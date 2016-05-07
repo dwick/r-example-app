@@ -2,7 +2,7 @@ import merge from '@r/platform/merge';
 import * as editSubredditActions from '../actions/editSubreddit';
 
 const DEFAULT = {
-  navState: '',
+  navState: 'navBasic',
 };
 
 export default function(state=DEFAULT, action={}) {
