@@ -9,6 +9,9 @@ export default function(state=DEFAULT, action={}) {
       const { session } = action.payload;
       return session;
     }
+    case sessionActions.DESTROY_SESSION: {
+      return DEFAULT;
+    }
     default: return state;
   }
 }

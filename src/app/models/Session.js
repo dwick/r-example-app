@@ -12,6 +12,15 @@ const fetchLogin = (username, password) => new Promise((resolve, reject) => {
     });
 });
 
+const logout = () => new Promise((resolve, reject) => {
+  superagent
+    .post('/logoutproxy')
+    .end((err, res) => {
+      if (err) { return reject(err); }
+      resolve();
+    })
+})
+
 const refreshSession = refreshToken => new Promise((resolve, reject) => {
   superagent
     .post('/refreshproxy')
@@ -46,6 +55,10 @@ export default class Session {
 
   get apiAuth() {
     return optionsWithAuth(this.accessToken);
+  }
+
+  async logout() {
+    return await logout();
   }
 
   async refresh() {

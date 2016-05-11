@@ -1,5 +1,5 @@
 export default (router, api) => {
-  router.post('/logout', async (ctx, next) => {
+  router.post('/logoutproxy', async (ctx, next) => {
     ctx.cookies.set('token');
     ctx.redirect('/');
   });
