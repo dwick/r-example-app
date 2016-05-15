@@ -1,0 +1,52 @@
+@import (reference) '~less/variables.less';
+@import (reference) '~less/mixins/importAll.less';
+
+.Dropdown {
+  display: inline-block;
+
+  &__content-wrapper {
+    background-color: @gray-lighter;
+    border: @gray-light;
+    position: fixed;
+    max-width: 420px;
+    z-index: 16;
+    .box-shadow(0 0 5px 0 rgba(0,0,0,0.2));
+  }
+
+  &__content {
+    overflow-y: scroll;
+  }
+}
+
+.DropdownMenu {
+  padding: @padding-base-vertical;
+}
+
+.DropdownMenuItem {
+  display: block;
+  padding-bottom: @padding-base-vertical;
+  margin-bottom: @padding-base-vertical;
+  font-size: 2 * @padding-base-vertical;
+  line-height: 4 * @padding-base-vertical;
+  border-bottom: 2px solid @gray-light;
+
+  &:last-child {
+    border-bottom: none;
+    padding-bottom: 0;
+    margin-bottom: 0;
+  }
+
+  &__icon,
+  &__text {
+    display: inline-block;
+    vertical-align: middle;
+  }
+
+  &__icon {
+    width: 4 * @padding-base-vertical;
+    text-align: center;
+    margin-right: @padding-base-vertical;
+    font-size: 22px;
+    line-height: 30px;
+  }
+}

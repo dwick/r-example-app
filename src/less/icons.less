@@ -1,118 +1,122 @@
 @font-face {
-	font-family: "icons-0.6398081928491592";
-	src: url('../fonts/icons-0.6398081928491592.eot');
-	src: url('../fonts/icons-0.6398081928491592.eot?#iefix') format('eot'),
-		url('../fonts/icons-0.6398081928491592.woff') format('woff'),
-		url('../fonts/icons-0.6398081928491592.ttf') format('truetype'),
-		url('../fonts/icons-0.6398081928491592.svg#icons-0.6398081928491592') format('svg');
+	font-family: "icons";
+	src: url('/fonts/icons.eot');
+	src: url('/fonts/icons.eot?#iefix') format('eot'),
+		url('/fonts/icons.woff') format('woff'),
+		url('/fonts/icons.ttf') format('truetype'),
+		url('/fonts/icons.svg#icons') format('svg');
 }
 
 .icon-base-pseudo {
-	font-family: "icons-0.6398081928491592";
+	font-family: "icons";
 		-webkit-font-smoothing: antialiased;
 		-moz-osx-font-smoothing: grayscale;
 	font-style: normal;
 	font-variant: normal;
 	font-weight: normal;
+	// speak: none; // only necessary if not using the private unicode range (firstGlyph option)
 	text-decoration: none;
 	text-transform: none;
 }
 
 .icon-char(@filename) {
-	@bar-chart: "\EA01";
-	@caron-circled: "\EA02";
-	@caron: "\EA03";
-	@check-circled: "\EA04";
-	@check: "\EA05";
-	@circle: "\EA06";
-	@clear: "\EA07";
-	@comment: "\EA08";
-	@comments-circled: "\EA09";
-	@comments: "\EA0A";
-	@compact: "\EA0B";
-	@controversial: "\EA0C";
-	@crown-circled: "\EA0D";
-	@crown: "\EA0E";
-	@delete_remove: "\EA0F";
-	@desktop: "\EA10";
-	@downvote-circled: "\EA11";
-	@downvote: "\EA12";
-	@eye: "\EA13";
-	@flag-circled: "\EA14";
-	@flag: "\EA15";
-	@follow: "\EA16";
-	@gallery_squares: "\EA17";
-	@gold: "\EA18";
-	@goldcircled: "\EA19";
-	@header-18plus: "\EA1A";
-	@header_banned: "\EA1B";
-	@header_gold: "\EA1C";
-	@header_locked: "\EA1D";
-	@header_private: "\EA1E";
-	@header_quarantine: "\EA1F";
-	@header_user: "\EA20";
-	@history: "\EA21";
-	@hot: "\EA22";
-	@info-circled: "\EA23";
-	@info: "\EA24";
-	@karma-circled: "\EA25";
-	@karma: "\EA26";
-	@law-circled: "\EA27";
-	@law: "\EA28";
-	@link-circled: "\EA29";
-	@link: "\EA2A";
-	@linkout: "\EA2B";
-	@lock: "\EA2C";
-	@menu: "\EA2D";
-	@message: "\EA2E";
-	@mod: "\EA2F";
-	@nav-arrowback: "\EA30";
-	@nav-arrowback2: "\EA31";
-	@nav-arrowdown: "\EA32";
-	@nav-arrowforward: "\EA33";
-	@nav-arrowup: "\EA34";
-	@nav-close: "\EA35";
-	@new: "\EA36";
-	@nsfw: "\EA37";
-	@op: "\EA38";
-	@play-circled: "\EA39";
-	@play: "\EA3A";
-	@play_triangle: "\EA3B";
-	@post-circled: "\EA3C";
-	@post: "\EA3D";
-	@post_edit: "\EA3E";
-	@r-circled: "\EA3F";
-	@r: "\EA40";
-	@reply-circled: "\EA41";
-	@reply: "\EA42";
-	@reply2: "\EA43";
-	@rules: "\EA44";
-	@save-circled: "\EA45";
-	@save: "\EA46";
-	@search-circled: "\EA47";
-	@search: "\EA48";
-	@seashells-circled: "\EA49";
-	@seashells: "\EA4A";
-	@settings-circled: "\EA4B";
-	@settings: "\EA4C";
-	@share-circled: "\EA4D";
-	@share: "\EA4E";
-	@snoo-circled: "\EA4F";
-	@snoo: "\EA50";
-	@snoo_logo_20: "\EA51";
-	@snoosilhouette: "\EA52";
-	@sticky: "\EA53";
-	@text-circled: "\EA54";
-	@text: "\EA55";
-	@twirly-circled: "\EA56";
-	@twirly: "\EA57";
-	@unsave-circled: "\EA58";
-	@unsave: "\EA59";
-	@upvote-circled: "\EA5A";
-	@upvote: "\EA5B";
-	@user-account: "\EA5C";
-	@x-circled: "\EA5D";
-	@x: "\EA5E";
+	@alert-moose: "\EA01";
+	@bar-chart: "\EA02";
+	@caron-circled: "\EA03";
+	@caron: "\EA04";
+	@check-circled: "\EA05";
+	@check: "\EA06";
+	@circle: "\EA07";
+	@circled-gold: "\EA08";
+	@clear: "\EA09";
+	@comment: "\EA0A";
+	@comments-circled: "\EA0B";
+	@comments: "\EA0C";
+	@compact: "\EA0D";
+	@controversial: "\EA0E";
+	@crown-circled: "\EA0F";
+	@crown: "\EA10";
+	@delete_remove: "\EA11";
+	@desktop: "\EA12";
+	@downvote-circled: "\EA13";
+	@downvote: "\EA14";
+	@eye: "\EA15";
+	@flag-circled: "\EA16";
+	@flag: "\EA17";
+	@follow: "\EA18";
+	@gallery_squares: "\EA19";
+	@gold: "\EA1A";
+	@header-18plus: "\EA1B";
+	@header_banned: "\EA1C";
+	@header_gold: "\EA1D";
+	@header_locked: "\EA1E";
+	@header_private: "\EA1F";
+	@header_quarantine: "\EA20";
+	@header_user: "\EA21";
+	@hide: "\EA22";
+	@history: "\EA23";
+	@hot: "\EA24";
+	@info-circled: "\EA25";
+	@info: "\EA26";
+	@karma-circled: "\EA27";
+	@karma: "\EA28";
+	@law-circled: "\EA29";
+	@law: "\EA2A";
+	@link-circled: "\EA2B";
+	@link: "\EA2C";
+	@linkout: "\EA2D";
+	@lock: "\EA2E";
+	@menu: "\EA2F";
+	@message: "\EA30";
+	@mod: "\EA31";
+	@nav-arrowback: "\EA32";
+	@nav-arrowback2: "\EA33";
+	@nav-arrowdown: "\EA34";
+	@nav-arrowforward: "\EA35";
+	@nav-arrowup: "\EA36";
+	@nav-close: "\EA37";
+	@new: "\EA38";
+	@nsfw: "\EA39";
+	@op: "\EA3A";
+	@play-circled: "\EA3B";
+	@play: "\EA3C";
+	@play_triangle: "\EA3D";
+	@post-circled: "\EA3E";
+	@post: "\EA3F";
+	@post_edit: "\EA40";
+	@r-circled: "\EA41";
+	@r: "\EA42";
+	@reply-circled: "\EA43";
+	@reply: "\EA44";
+	@reply2: "\EA45";
+	@rules: "\EA46";
+	@save-circled: "\EA47";
+	@save: "\EA48";
+	@search-circled: "\EA49";
+	@search: "\EA4A";
+	@seashells-circled: "\EA4B";
+	@seashells: "\EA4C";
+	@settings-circled: "\EA4D";
+	@settings: "\EA4E";
+	@share-circled: "\EA4F";
+	@share: "\EA50";
+	@snoo-circled: "\EA51";
+	@snoo: "\EA52";
+	@snoo_logo_20: "\EA53";
+	@snoosilhouette: "\EA54";
+	@spaceship: "\EA55";
+	@sticky: "\EA56";
+	@text-circled: "\EA57";
+	@text: "\EA58";
+	@twirly-circled: "\EA59";
+	@twirly: "\EA5A";
+	@unsave-circled: "\EA5B";
+	@unsave: "\EA5C";
+	@upvote-circled: "\EA5D";
+	@upvote: "\EA5E";
+	@user-account: "\EA5F";
+	@x-circled: "\EA60";
+	@x: "\EA61";
 	
 	content: @@filename;
 }
@@ -126,6 +130,9 @@
 	}
 }
 
+.icon-alert-moose {
+	.icon(alert-moose);
+}
 .icon-bar-chart {
 	.icon(bar-chart);
 }
@@ -143,6 +150,9 @@
 }
 .icon-circle {
 	.icon(circle);
+}
+.icon-circled-gold {
+	.icon(circled-gold);
 }
 .icon-clear {
 	.icon(clear);
@@ -198,9 +208,6 @@
 .icon-gold {
 	.icon(gold);
 }
-.icon-goldcircled {
-	.icon(goldcircled);
-}
 .icon-header-18plus {
 	.icon(header-18plus);
 }
@@ -221,6 +228,9 @@
 }
 .icon-header_user {
 	.icon(header_user);
+}
+.icon-hide {
+	.icon(hide);
 }
 .icon-history {
 	.icon(history);
@@ -371,6 +381,9 @@
 }
 .icon-snoosilhouette {
 	.icon(snoosilhouette);
+}
+.icon-spaceship {
+	.icon(spaceship);
 }
 .icon-sticky {
 	.icon(sticky);

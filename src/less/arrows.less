@@ -1,0 +1,52 @@
+@import (reference) '~less/variables.less';
+@import (reference) '~less/mixins/importAll.less';
+
+.stalagmite, .stalactite {
+  width: 18px;
+  height: 10px;
+  position: absolute;
+  left: 14px;
+  overflow: hidden;
+  z-index: 1;
+  margin-left: -9px;
+
+  &:after {
+    background: @gray-lighter;
+    content: "";
+    width: 10px;
+    height: 10px;
+    position: absolute;
+    left: 4px;
+
+    .rotate(45deg);
+    .box-shadow(0 0 5px 0 rgba(0,0,0,0.2));
+
+  }
+
+  &.pull-right {
+    left: auto;
+    right: 5px;
+  }
+}
+
+// teepee
+.stalagmite {
+  bottom: 100%;
+
+  &:after {
+    bottom: -5px;
+  }
+}
+
+// hangs
+.stalactite {
+  top: 100%;
+
+  &:after {
+    top: -5px;
+  }
+
+  &.hidden:after {
+    top: -10px;
+  }
+}

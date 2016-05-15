@@ -1,5 +1,6 @@
 import 'less/component-animations.less';
 import 'less/grid.less';
+import 'less/navs.less';
 import 'less/navbar.less';
 
 import './Header.less';
@@ -8,6 +9,7 @@ import classNames from 'classnames';
 import React from 'react';
 import { Anchor } from '@r/platform/components';
 
+import HelpMenu from 'app/components/HelpMenu/HelpMenu';
 import Logo from 'app/components/Logo/Logo';
 import Logout from 'app/components/Logout/Logout';
 import routes from 'app/router/routes';
@@ -62,6 +64,9 @@ export default class Header extends React.Component {
           </div>
           <nav className={ classNames('navbar-collapse collapse', { in: this.state.expanded }) }>
             <div className='navbar-right'>
+              <ul className='nav navbar-nav'>
+                <HelpMenu tag='li' className='navbar-link'/>
+              </ul>
               {
                 this.props.authenticated ?
                   <Logout className='navbar-form' /> :
