@@ -11,7 +11,7 @@ Client({
   routes: routes.toArray(),
   reducers: allReducers,
   modifyData: data => {
-    if (data.session) {
+    if (!isEmpty(data.session)) {
       data.session = new Session(data.session);
       window.session = data.session;
     }
