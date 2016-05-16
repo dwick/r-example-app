@@ -45,4 +45,4 @@ const Login = connect(selector)((props) => {
   );
 });
 
-export { Login };
+export default Login;

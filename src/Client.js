@@ -15,6 +15,11 @@ Client({
       data.session = new Session(data.session);
       window.session = data.session;
     }
+
+    if ('locations' in data && !!data.locations) {
+      delete data.locations;
+    }
+
     console.log(data);
     return data;
   },

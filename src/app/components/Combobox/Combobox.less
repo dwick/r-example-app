@@ -1,0 +1,76 @@
+@import (reference) '~less/variables.less';
+@import (reference) '~less/mixins/importAll.less';
+
+@combobox-selected-bg: @component-active-bg;
+@combobox-selected-color: @component-active-color;
+@combobox-focused-bg: #f4f4f4;
+@combobox-focused-color: @text-color;
+@caret-width-base: 4px;
+
+
+.Combobox {
+  position: relative;
+
+  &:focus {
+    outline: 0;
+  }
+
+  &__btn {
+    min-height: @input-height-base;
+  }
+
+  &__caret {
+    display: inline-block;
+    width: 0;
+    height: 0;
+    margin-left: 0;
+    vertical-align: middle;
+    border-top:   @caret-width-base solid;
+    border-right: @caret-width-base solid transparent;
+    border-left:  @caret-width-base solid transparent;
+  }
+
+  &__open {
+    .Combobox__btn,
+    .Combobox__control {
+      border-bottom-left-radius: 0;
+      border-bottom-right-radius: 0;
+    }
+  }
+
+  &__list {
+    background: @input-bg;
+    border: 1px solid @input-border;
+    border-top: 0;
+    border-radius: 0 0 @input-border-radius @input-border-radius;
+    display: none;
+    max-height: 100px;
+    overflow-y: scroll;
+    padding: 0;
+    position: absolute;
+    top: 100%;
+    right: 0;
+    left: 0;
+    z-index: 1000;
+
+    .Combobox__open & {
+      display: block;
+    }
+  }
+
+  &__list-item {
+    cursor: pointer;
+    padding: @padding-base-vertical @padding-base-horizontal;
+    .text-overflow();
+  }
+
+  &__list-item-selected {
+    background: @combobox-selected-bg !important;
+    color: @combobox-selected-color !important;;
+  }
+
+  &__list-item-focused {
+    background: @combobox-focused-bg;
+    color: @combobox-focused-color;
+  }
+}

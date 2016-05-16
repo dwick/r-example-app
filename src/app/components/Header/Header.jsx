@@ -69,7 +69,7 @@ export default class Header extends React.Component {
               </ul>
               {
                 this.props.authenticated ?
-                  <Logout className='navbar-form' /> :
+                  <Logout className='navbar-form pull-right' /> :
                   showLogin ?
                     <Anchor className='navbar-btn btn btn-primary' href={ routes.getUrl('login') }>
                       login

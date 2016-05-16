@@ -6,7 +6,7 @@ import React from 'react';
 import routes from 'app/router/routes';
 import { Anchor } from '@r/platform/components';
 
-export const LandingPage = (props) => {
+const LandingPage = (props) => {
   return (
     <div className='LandingPage' role="main">
       <div className='LandingPage__masthead'>
@@ -65,3 +65,5 @@ export const LandingPage = (props) => {
     </div>
   );
 }
+
+export default LandingPage;
