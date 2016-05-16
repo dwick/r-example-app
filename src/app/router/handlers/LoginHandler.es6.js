@@ -1,6 +1,7 @@
 import { BaseHandler, METHODS } from '@r/platform/router';
 import * as platformActions from '@r/platform/actions';
 
+import routes from 'app/router/routes';
 import Session from 'app/models/Session';
 import * as sessionActions from 'app/actions/session';
 
@@ -23,7 +24,7 @@ export default class LoginHandler extends BaseHandler {
     try {
       const newSession = await Session.fromLogin(username, password);
       dispatch(sessionActions.setSession(newSession));
-      dispatch(platformActions.navigateToUrl('get', redirect ? redirect : '/dashboard'));
+      dispatch(platformActions.navigateToUrl('get', redirect ? redirect : routes.getUrl('dashboard')));
     } catch (e) {
       // TODO: Do something on login failure
       console.log('LOGIN FAILURE');
