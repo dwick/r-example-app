@@ -19,28 +19,28 @@ function shouldRenderAbove(target) {
   return targetMidpoint > midpoint;
 }
 
-function computeFloat(target) {
+function computeFloat(target, maxWidth) {
   const targetBounds = target.getBoundingClientRect();
   const targetLeft = targetBounds.left;
   const targetWidth = targetBounds.width;
   const targetMidpoint = targetLeft + (targetWidth / 2);
   const windowWidth = window.innerWidth;
 
-  if (targetMidpoint < (MAX_WIDTH / 2)) {
+  if (targetMidpoint < (maxWidth / 2)) {
     return { left: MARGIN_BUFFER };
-  } else if ((windowWidth - targetMidpoint) < (MAX_WIDTH / 2)) {
+  } else if ((windowWidth - targetMidpoint) < (maxWidth / 2)) {
     return { right: MARGIN_BUFFER };
   }
 
   // if we're at this point, it is safe to assume that the dropdown will assume
-  // the MAX_WIDTH
+  // the maxWidth
   return {
     left: targetMidpoint,
-    marginLeft: -(MAX_WIDTH / 2),
+    marginLeft: -(maxWidth / 2),
   };
 }
 
-function computeContentStyles(target, offset) {
+function computeContentStyles(target, offset, maxWidth) {
   const targetBounds = target.getBoundingClientRect();
   const targetTop = targetBounds.top;
   const targetBottom = targetBounds.bottom;
@@ -56,8 +56,8 @@ function computeContentStyles(target, offset) {
   };
 
   const wrapperStyle = {
-    ...computeFloat(target),
-    width: windowWidth - (2 * MARGIN_BUFFER),
+    ...computeFloat(target, maxWidth),
+    width: Math.min(maxWidth, windowWidth - (2 * MARGIN_BUFFER)),
   };
 
   const contentStyle = {};
@@ -80,11 +80,13 @@ class Dropdown extends React.Component {
     target: T.object.isRequired,
     offset: T.number,
     onClose: T.func,
+    maxWidth: T.number,
   };
 
   static defaultProps = {
     offset: 0,
     onClose: () => {},
+    maxWidth: MAX_WIDTH,
   };
 
   constructor(props) {
@@ -113,8 +115,8 @@ class Dropdown extends React.Component {
   }
 
   render() {
-    const { children, target, offset } = this.props;
-    const { wrapperStyle, contentStyle, arrowStyle } = computeContentStyles(target, offset);
+    const { children, target, offset, maxWidth } = this.props;
+    const { wrapperStyle, contentStyle, arrowStyle } = computeContentStyles(target, offset, maxWidth);
 
     return (
       <div className='Dropdown' ref='dropdown'>
