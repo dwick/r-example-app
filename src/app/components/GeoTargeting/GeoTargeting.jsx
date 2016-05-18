@@ -6,7 +6,7 @@ import './GeoTargeting.less';
 import React from 'react';
 
 import Combobox from 'app/components/Combobox/Combobox';
-import * as regexUtils from 'app/lib/regex';
+import * as regexUtils from 'lib/regex';
 
 function geoSort(a, b) {
   const aname = a.country ? a.country + a.region + a.metro : a.name;

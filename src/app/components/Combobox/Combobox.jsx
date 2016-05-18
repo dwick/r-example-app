@@ -8,8 +8,8 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import * as $ from 'jquery';
 
-import * as domUtils from 'app/lib/dom';
-import * as regexUtils from 'app/lib/regex';
+import * as domUtils from 'lib/dom';
+import * as regexUtils from 'lib/regex';
 
 const T = React.PropTypes;
 
