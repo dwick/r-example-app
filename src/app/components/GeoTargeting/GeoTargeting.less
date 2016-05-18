@@ -1,0 +1,58 @@
+@import (reference) '~less/variables.less';
+
+.GeoTargeting {
+  &__targets {
+    background: @input-bg;
+    border: 1px solid @input-border;
+    border-bottom: 0;
+    margin-bottom: 0;
+  }
+
+  &__target-group-title {
+    color: #90949c;
+  }
+
+  &__target-group-title,
+  &__target {
+    display: block;
+    width: 100%;
+    height: @input-height-base;
+    padding: @padding-base-vertical @padding-base-horizontal;
+  }
+
+  &__target {
+    font-weight: bold;
+    padding-left: (@padding-base-horizontal * 2);
+  }
+
+  &__target:hover,
+  &__target-group-active {
+    background: @gray-lighter;
+  }
+
+  &__target-group-active {
+    .GeoTargeting__group-remove {
+      display: block;
+    }
+  }
+
+  &__target:hover {
+    .GeoTargeting__target-remove {
+      display: block;
+    }
+  }
+
+  &__target-remove,
+  &__group-remove {
+    color: @gray;
+    float: right;
+    font-weight: normal;
+    display: none;
+
+    &:hover,
+    &:focus,
+    &:active {
+      color: darken(@gray, 5%);
+    }
+  }
+}

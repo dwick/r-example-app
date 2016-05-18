@@ -1,28 +1,33 @@
+import 'less/input-groups.less';
+import 'less/buttons.less';
+import 'less/caret.less';
 import 'less/forms.less';
 import 'less/grid.less';
 
 import './GeoTargeting.less';
 
+import classNames from 'classnames';
+import { connect } from 'react-redux';
 import React from 'react';
 
 import Combobox from 'app/components/Combobox/Combobox';
+import HelpTooltip from 'app/components/HelpTooltip/HelpTooltip';
+import IncludeExclude from 'app/components/IncludeExclude/IncludeExclude';
 import * as regexUtils from 'lib/regex';
+import * as unsavedActions from 'app/actions/unsaved';
 
-function geoSort(a, b) {
+function _sort(a, b) {
   const aname = a.country ? a.country + a.region + a.metro : a.name;
   const bname = b.country ? b.country + b.region + b.metro : b.name;
 
   return aname > bname ? 1 : (aname === bname ? 0 : -1);
 }
 
-function geoFilter(item, searchTerm) {
+function _filter(item, searchTerm) {
   const regex = new RegExp('^' + regexUtils.escape(searchTerm), 'i');
   const nameParts = item.name.match(/[^\()]+\(([^\)]+)\)/i);
 
-  return regex.test(item.name) ||
-    (item.region && regex.test(item.region)) ||
-    (item.country && regex.test(item.country)) ||
-    (nameParts && regex.test(RegExp.$1));
+  return regex.test(item.name);
 }
 
 const T = React.PropTypes;
@@ -31,25 +36,64 @@ export default class GeoTargeting extends React.Component {
 
   static propTypes = {
     available: T.array.isRequired,
-    locations: T.instanceOf(Set).isRequired,
+    includeLocations: T.instanceOf(Set).isRequired,
+    excludeLocations: T.instanceOf(Set).isRequired,
     onAddLocation: T.func.isRequired,
     onRemoveLocation: T.func.isRequired,
   };
 
   static defaultProps = {
     available: [{
-      id: 'US--',
-      name: 'United States',
-      country: 'US',
-    }, {
       id: 'CA--',
       name: 'Canada',
-      country: 'CA',
+      country: 'Canada',
+    }, {
+      id: 'UK--',
+      name: 'United Kingdom',
+      country: 'United Kingdom',
+    }, {
+      id: 'US--',
+      name: 'United States',
+      country: 'United States',
+    }, {
+      id: 'US-CA-',
+      name: 'California, US',
+      country: 'United States',
+      region: 'California',
     }],
   }
 
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      include: true,
+      activeGroup: null,
+    };
+
+    this._setInclude = this._setInclude.bind(this);
+  }
+
+  _enterGroup(group) {
+    this.setState({
+      activeGroup: group,
+    });
+  }
+
+  _leaveGroup(group) {
+    this.setState({
+      activeGroup: null,
+    });
+  }
+
+  _setInclude(include) {
+    this.setState({ include: include });
+  }
+
   _addTarget(target) {
-    this.props.onAddLocation(target.id);
+    const { include } = this.state;
+
+    this.props.onAddLocation(target.id, { include });
     this.refs.input.clear();
   }
 
@@ -57,48 +101,97 @@ export default class GeoTargeting extends React.Component {
     this.props.onRemoveLocation(target.id);
   }
 
+  _removeGroup(ids) {
+    this.props.onRemoveLocation(ids);
+  }
+
   render() {
-    const locations = this.props.locations;
-    const available = this.props.available
-                      .filter(geo => !locations.has(geo.id))
-                      .sort(geoSort);
-    const selected = this.props.available
-                      .filter((geo) => locations.has(geo.id))
+    const component = this;
+    const { includeLocations, excludeLocations, available } = this.props;
+    const unavailable = new Set([...includeLocations, ...excludeLocations]);
+    const remaining = available.filter(target => !unavailable.has(target.id));
+    const selected = available.filter(target => unavailable.has(target.id));
+    const grouped = selected.reduce((g, target) => {
+      g[target.country] = g[target.country] || [];
+      g[target.country].push(target);
+
+      return g;
+    }, {});
+    const groupings = Object.keys(grouped);
 
     return (
       <div className='GeoTargeting'>
-        <div className='help-block'>
-          enter the country names or US metro areas you wish to target
-        </div>
         <div className='row'>
           <div className='col-xs-6'>
             <div className='form-group'>
-              <label htmlFor='location' className='sr-only'>location</label>
-              <Combobox
-                ref='input'
-                items={available}
-                textField='name'
-                onSelect={this._addTarget.bind(this)}
-                filter={geoFilter}
-              />
+              <label htmlFor='location'>
+                Locations
+                <HelpTooltip>
+                  <p>Enter one or more country names, states/regions, or US metro areas you wish to target.</p>
+                  <p><a href="#">Learn more</a></p>
+                </HelpTooltip>
+              </label>
+              { groupings.length ?
+                <ul className='GeoTargeting__targets list-unstyled'>
+                  {groupings.map(group => {
+                    return (
+                      <li key={group} className={classNames({
+                        'GeoTargeting__target-group': true,
+                        'GeoTargeting__target-group-active': group === this.state.activeGroup,
+                      })}>
+                        <div
+                          className='GeoTargeting__target-group-title'
+                          onMouseEnter={component._enterGroup.bind(component, group)}
+                          onMouseLeave={component._leaveGroup.bind(component, group)}
+                        >
+                          { group }
+                          <a
+                            href='javascript: void 0;'
+                            className='GeoTargeting__group-remove'
+                            onClick={component._removeGroup.bind(component, grouped[group].map(({ id }) => id))}>
+                            ×
+                          </a>
+                        </div>
+                        <ul className='GeoTargeting__target-group-items list-unstyled'>
+                          {
+                            grouped[group].map(target => {
+                              return (
+                                <li key={ target.id } className='GeoTargeting__target'>
+                                  <span className={classNames({
+                                    'GeoTargeting__icon icon': true,
+                                    'icon-upvote icon-orangered': includeLocations.has(target.id),
+                                    'icon-downvote icon-periwinkle': excludeLocations.has(target.id),
+                                  })}/>
+                                  { target.name }
+                                  <a
+                                    href='javascript: void 0;'
+                                    className='GeoTargeting__target-remove'
+                                    onClick={component._removeTarget.bind(component, target)}>
+                                    ×
+                                  </a>
+                                </li>
+                              );
+                            })
+                          }
+                        </ul>
+                      </li>
+                    );
+                  })}
+                </ul> : null
+              }
+              <div className='input-group'>
+                <span className='input-group-addon'>
+                  <IncludeExclude include={ this.state.include } onChange={ this._setInclude}/>
+                </span>
+                <Combobox
+                  ref='input'
+                  items={remaining.sort(_sort)}
+                  textField='name'
+                  onSelect={this._addTarget.bind(this)}
+                  filter={_filter}
+                />
+              </div>
             </div>
-          </div>
-          <div className='col-xs-6'>
-            <ul className='list-unstyled'>
-              {selected.map((target) => {
-                return (
-                  <li key={target.id} className='GeoTargeting__target'>
-                    <a
-                      href='javascript: void 0;'
-                      className='GeoTargeting__target-remove'
-                      onClick={this._removeTarget.bind(this, target)}>
-                      ×
-                    </a>
-                    {target.name}
-                  </li>
-                );
-              })}
-            </ul>
           </div>
         </div>
       </div>
@@ -106,3 +199,15 @@ export default class GeoTargeting extends React.Component {
   }
 
 }
+
+const mapStateToProps = (state) => ({
+  includeLocations: state.includeLocations,
+  excludeLocations: state.excludeLocations,
+});
+
+const mapDispatchToProps = (dispatch) => ({
+  onAddLocation: (id, options) => dispatch(unsavedActions.addLocation(id, options)),
+  onRemoveLocation: (id) => dispatch(unsavedActions.removeLocation(id)),
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(GeoTargeting);
