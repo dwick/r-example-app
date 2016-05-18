@@ -89,7 +89,7 @@ class ComboboxInput extends React.Component {
 class Combobox extends React.Component {
 
   static defaultProps = {
-    suggest: false,
+    suggest: true,
     size: 5,
     items: [],
     filter: (item, searchTerm) => {
