@@ -121,6 +121,7 @@ class Combobox extends React.Component {
 
     this.open = this.open.bind(this);
     this.close = this.close.bind(this);
+    this._onBlur = this._onBlur.bind(this);
     this._keydown = this._keydown.bind(this);
     this._onChange = this._onChange.bind(this);
     this._shortcuts = this._shortcuts.bind(this);
@@ -177,7 +178,7 @@ class Combobox extends React.Component {
           'Combobox': true,
           'Combobox__open': isOpen,
         })}
-        onBlur={ this.close }
+        onBlur={ this._onBlur }
         onKeyDown={ this._shortcuts }
       >
         <ComboboxInput
@@ -220,6 +221,14 @@ class Combobox extends React.Component {
     e.stopPropagation();
   }
 
+  _onBlur(e) {
+    if (this.refs.combobox.contains(e.relatedTarget)) {
+      return;
+    }
+
+    this.close();
+  }
+
   open(callback) {
     this.setState({
       isOpen: true,
@@ -229,7 +238,7 @@ class Combobox extends React.Component {
     });
   }
 
-  close(e) {
+  close() {
     this.setState({
       isOpen: false,
     });
