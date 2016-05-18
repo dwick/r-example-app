@@ -6,19 +6,13 @@ import routes from 'app/router/routes';
 import App from 'app/App';
 import allReducers from 'app/reducers/importAll';
 import Session from 'app/models/Session';
+import serializer from 'lib/serializer';
 
 Client({
   routes: routes.toArray(),
   reducers: allReducers,
   modifyData: data => {
-    if (!isEmpty(data.session)) {
-      data.session = new Session(data.session);
-      window.session = data.session;
-    }
-
-    if ('locations' in data && !!data.locations) {
-      delete data.locations;
-    }
+    data = serializer.deserialize(data);
 
     console.log(data);
     return data;

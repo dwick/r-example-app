@@ -3,6 +3,7 @@ import ReactServerDom from 'react-dom/server';
 import { Provider } from 'react-redux';
 
 import App from 'app/App';
+import serializer from 'lib/serializer';
 
 export default function(data, store) {
   return ReactServerDom.renderToStaticMarkup(
@@ -13,7 +14,7 @@ export default function(data, store) {
         <meta name="viewport" content="width=device-width, initial-scale=1"/>
         <script
           id='data'
-          dangerouslySetInnerHTML={ { __html: `window.___r = ${ JSON.stringify(data) }` } }
+          dangerouslySetInnerHTML={ { __html: `window.___r = ${ serializer.serialize(data) }` } }
         ></script>
         <link rel='stylesheet' href='/Client.css'/>
       </head>
