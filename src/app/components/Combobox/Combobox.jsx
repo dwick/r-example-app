@@ -1,6 +1,3 @@
-import 'less/input-groups.less';
-import 'less/buttons.less';
-
 import './Combobox.less';
 
 import classNames from 'classnames';
@@ -184,32 +181,15 @@ class Combobox extends React.Component {
         onFocus={ this.open }
         onKeyDown={ this._shortcuts }
       >
-        <div
-          className={ classNames({'input-group': !hasOpen}) }>
-          <ComboboxInput
-            ref='input'
-            id={ this.props.id }
-            suggesting={ this.state.hasSuggestion }
-            value={ this.state.value }
-            onChange={ this._onChange }
-            onKeyDown={ this._keydown }
-            tabIndex={ this.props.tabIndex }
-          />
-          {
-            !hasOpen ? (
-              <span className='input-group-btn'>
-                <button
-                  onBlur={ this._stopPropagation }
-                  tabIndex='-1'
-                  className='btn btn-default Combobox__btn'
-                  type='button'
-                >
-                  <span className='Combobox__caret'></span>
-                </button>
-              </span>
-            ) : null
-          }
-        </div>
+        <ComboboxInput
+          ref='input'
+          id={ this.props.id }
+          suggesting={ this.state.hasSuggestion }
+          value={ this.state.value }
+          onChange={ this._onChange }
+          onKeyDown={ this._keydown }
+          tabIndex={ this.props.tabIndex }
+        />
         <ol ref='list' className='Combobox__list list-unstyled' style={ {
           maxHeight: this.state.maxHeight || 'auto',
         } }>

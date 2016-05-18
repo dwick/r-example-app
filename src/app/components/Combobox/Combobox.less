@@ -5,7 +5,6 @@
 @combobox-selected-color: @component-active-color;
 @combobox-focused-bg: #f4f4f4;
 @combobox-focused-color: @text-color;
-@caret-width-base: 4px;
 
 
 .Combobox {
@@ -13,21 +12,6 @@
 
   &:focus {
     outline: 0;
-  }
-
-  &__btn {
-    min-height: @input-height-base;
-  }
-
-  &__caret {
-    display: inline-block;
-    width: 0;
-    height: 0;
-    margin-left: 0;
-    vertical-align: middle;
-    border-top:   @caret-width-base solid;
-    border-right: @caret-width-base solid transparent;
-    border-left:  @caret-width-base solid transparent;
   }
 
   &__open {
