@@ -61,6 +61,7 @@ export default class HelpMenu extends React.Component {
         <Dropdown
           target={ dropdownTarget }
           offset={ 10 }
+          maxWidth={ 200 }
           onClose={ this.toggleDropdown }
         >
           <DropdownMenu>
