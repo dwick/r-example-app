@@ -178,7 +178,6 @@ class Combobox extends React.Component {
           'Combobox__open': isOpen,
         })}
         onBlur={ this.close }
-        onFocus={ this.open }
         onKeyDown={ this._shortcuts }
       >
         <ComboboxInput
@@ -221,10 +220,13 @@ class Combobox extends React.Component {
     e.stopPropagation();
   }
 
-  open() {
+  open(callback) {
     this.setState({
       isOpen: true,
-    }, this.refs.input.focus);
+    }, () => {
+      this.refs.input.focus();
+      callback && callback();
+    });
   }
 
   close(e) {
@@ -288,19 +290,26 @@ class Combobox extends React.Component {
     const suggestion = this.props.suggest && filtered[0];
     const hasSuggestion = !!(!this._deleting && suggestion);
 
-    this.setState({
-      isOpen: !!filtered.length,
-      selectedItem: null,
-      filtered: filtered,
-      hasSuggestion: hasSuggestion,
-      value: hasSuggestion ?
-        this._getText(suggestion) : value,
-      focusedIndex: this._indexOf(
-        this.props.items,
-        suggestion || filtered[0]),
-    }, () => {
-      this.props.onChange(this.state.value);
-    });
+    const setState = () => {
+      this.setState({
+        selectedItem: null,
+        filtered: filtered,
+        hasSuggestion: hasSuggestion,
+        value: hasSuggestion ?
+          this._getText(suggestion) : value,
+        focusedIndex: this._indexOf(
+          this.props.items,
+          suggestion || filtered[0]),
+      }, () => {
+        this.props.onChange(this.state.value);
+      });
+    }
+
+    if (filtered.length) {
+      this.open(setState);
+    } else {
+      setState();
+    }
   }
 
   _select(item, index) {
