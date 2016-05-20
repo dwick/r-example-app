@@ -1,6 +1,7 @@
 import React from 'react';
 
 import GeoTargeting from 'app/components/GeoTargeting/GeoTargeting';
+import LanguageTargeting from 'app/components/LanguageTargeting/LanguageTargeting';
 
 const T = React.PropTypes;
 
@@ -10,6 +11,10 @@ const CreateCampaign = (props) => {
       <fieldset>
         <legend>Audience</legend>
         <GeoTargeting />
+      </fieldset>
+      <fieldset>
+        <legend>Langauges</legend>
+        <LanguageTargeting />
       </fieldset>
     </div>
   );

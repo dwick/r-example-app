@@ -1,12 +1,12 @@
-export const ADD_LOCATION = 'UNPAID__ADD_LOCATION';
-export const REMOVE_LOCATION = 'UNPAID__REMOVE_LOCATION';
+export const ADD_LOCATIONS = 'UNPAID__ADD_LOCATIONS';
+export const REMOVE_LOCATIONS = 'UNPAID__REMOVE_LOCATIONS';
 
-export const addLocation = (location, { include }) => ({
-  type: ADD_LOCATION,
-  payload: { location, include },
+export const addLocations = (locations, { include }) => ({
+  type: ADD_LOCATIONS,
+  payload: { locations, include },
 });
 
-export const removeLocation = (location) => ({
-  type: REMOVE_LOCATION,
-  payload: { location },
+export const removeLocations = (locations) => ({
+  type: REMOVE_LOCATIONS,
+  payload: { locations },
 });

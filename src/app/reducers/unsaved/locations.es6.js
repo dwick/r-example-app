@@ -7,10 +7,10 @@ const DEFAULT = new Set();
 const locationsFactory = ({ include }) => {
   return (state=DEFAULT, action={}) => {
     switch(action.type) {
-      case unsavedActions.ADD_LOCATION: {
+      case unsavedActions.ADD_LOCATIONS: {
         const { payload } = action;
-        const additions = Array.isArray(payload.location) ?
-          payload.location : [payload.location];
+        const additions = Array.isArray(payload.locations) ?
+          payload.locations : [payload.locations];
 
         if (include === payload.include) {
           return new Set([
@@ -21,10 +21,10 @@ const locationsFactory = ({ include }) => {
 
         return state;
       }
-      case unsavedActions.REMOVE_LOCATION: {
+      case unsavedActions.REMOVE_LOCATIONS: {
         const { payload } = action;
-        const removals = Array.isArray(payload.location) ?
-          payload.location : [payload.location];
+        const removals = Array.isArray(payload.locations) ?
+          payload.locations : [payload.locations];
 
         let locations = new Set([...state]);
 

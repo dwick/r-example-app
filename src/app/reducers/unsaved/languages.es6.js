@@ -6,20 +6,20 @@ const DEFAULT = new Set();
 
 export const languages = (state=DEFAULT, action={}) => {
   switch(action.type) {
-    case unsavedActions.ADD_LANGUAGE: {
+    case unsavedActions.ADD_LANGUAGES: {
       const { payload } = action;
-      const additions = Array.isArray(payload.language) ?
-        payload.language : [payload.language];
+      const additions = Array.isArray(payload.languages) ?
+        payload.languages : [payload.languages];
 
       return new Set([
         ...state,
         ...additions,
       ]);
     }
-    case unsavedActions.REMOVE_LANGUAGE: {
+    case unsavedActions.REMOVE_LANGUAGES: {
       const { payload } = action;
-      const removals = Array.isArray(payload.language) ?
-        payload.language : [payload.language];
+      const removals = Array.isArray(payload.languages) ?
+        payload.languages : [payload.languages];
 
       let languages = new Set([...state]);
 

@@ -13,7 +13,9 @@ import React from 'react';
 import Combobox from 'app/components/Combobox/Combobox';
 import HelpTooltip from 'app/components/HelpTooltip/HelpTooltip';
 import IncludeExclude from 'app/components/IncludeExclude/IncludeExclude';
+import { TargetList, Target, TargetGroup, TargetGroupTitle } from 'app/components/Targeting/Targeting';
 import * as regexUtils from 'lib/regex';
+import propTypes from 'lib/propTypes';
 import * as unsavedActions from 'app/actions/unsaved';
 
 function _sort(a, b) {
@@ -33,13 +35,20 @@ function _filter(item, searchTerm) {
 const T = React.PropTypes;
 
 export default class GeoTargeting extends React.Component {
+  static REQUIRED_ITEM_PROPS = ['foo', 'bar']
 
   static propTypes = {
-    available: T.array.isRequired,
+    available: T.arrayOf(T.shape({
+      id: T.string.isRequired,
+      name: T.string.isRequired,
+      country: T.string.isRequired,
+      region: T.string,
+      dma: T.string,
+    })).isRequired,
     includeLocations: T.instanceOf(Set).isRequired,
     excludeLocations: T.instanceOf(Set).isRequired,
-    onAddLocation: T.func.isRequired,
-    onRemoveLocation: T.func.isRequired,
+    onAddTargets: T.func.isRequired,
+    onRemoveTargets: T.func.isRequired,
   };
 
   static defaultProps = {
@@ -68,41 +77,77 @@ export default class GeoTargeting extends React.Component {
 
     this.state = {
       include: true,
-      activeGroup: null,
+      active: null,
     };
 
     this._setInclude = this._setInclude.bind(this);
   }
 
-  _enterGroup(group) {
+  _updateActive(active) {
     this.setState({
-      activeGroup: group,
+      active: active,
     });
   }
 
-  _leaveGroup(group) {
-    this.setState({
-      activeGroup: null,
-    });
+  _removeTargets(ids) {
+    this.props.onRemoveTargets(ids);
+  }
+
+  _addTarget(target) {
+    const { include } = this.state;
+
+    this.props.onAddTargets(target.id, { include });
+    this.refs.input.clear();
   }
 
   _setInclude(include) {
     this.setState({ include: include });
   }
 
-  _addTarget(target) {
-    const { include } = this.state;
+  renderTargetGroups(grouped) {
+    const groupKeys = Object.keys(grouped);
+    const { includeLocations, excludeLocations } = this.props;
 
-    this.props.onAddLocation(target.id, { include });
-    this.refs.input.clear();
-  }
+    if (!groupKeys.length) {
+      return;
+    }
 
-  _removeTarget(target) {
-    this.props.onRemoveLocation(target.id);
-  }
-
-  _removeGroup(ids) {
-    this.props.onRemoveLocation(ids);
+    return (
+      <TargetList>
+        { 
+          groupKeys.map((key) => {
+            const group = grouped[key];
+            return (
+              <TargetGroup key={ key } active={ key === this.state.active }>
+                <TargetGroupTitle
+                  onEnter={ this._updateActive.bind(this, key) }
+                  onLeave={ this._updateActive.bind(this, null) }
+                  onRemove={ this._removeTargets.bind(this, group.map(({ id }) => id)) }
+                >
+                  { key }
+                </TargetGroupTitle>
+                <TargetList>
+                  {
+                    group.map((target) => {
+                      return (
+                        <Target key={ target.id } onRemove={ this._removeTargets.bind(this, target.id) }>
+                          <span className={classNames({
+                            'Targeting__icon icon': true,
+                            'icon-upvote icon-orangered': includeLocations.has(target.id),
+                            'icon-downvote icon-periwinkle': excludeLocations.has(target.id),
+                          })}/>
+                          { target.name }
+                        </Target>
+                      );
+                    })
+                  }
+                </TargetList>
+              </TargetGroup>
+            );
+          })
+        }
+      </TargetList>
+    );
   }
 
   render() {
@@ -117,81 +162,31 @@ export default class GeoTargeting extends React.Component {
 
       return g;
     }, {});
-    const groupings = Object.keys(grouped);
 
     return (
       <div className='GeoTargeting'>
-        <div className='row'>
-          <div className='col-xs-6'>
-            <div className='form-group'>
-              <label htmlFor='location'>
-                Locations
-                <HelpTooltip>
-                  <p>Enter one or more country names, states/regions, or US metro areas you wish to target.</p>
-                  <p><a href="#">Learn more</a></p>
-                </HelpTooltip>
-              </label>
-              { groupings.length ?
-                <ul className='GeoTargeting__targets list-unstyled'>
-                  {groupings.map(group => {
-                    return (
-                      <li key={group} className={classNames({
-                        'GeoTargeting__target-group': true,
-                        'GeoTargeting__target-group-active': group === this.state.activeGroup,
-                      })}>
-                        <div
-                          className='GeoTargeting__target-group-title'
-                          onMouseEnter={component._enterGroup.bind(component, group)}
-                          onMouseLeave={component._leaveGroup.bind(component, group)}
-                        >
-                          { group }
-                          <a
-                            href='javascript: void 0;'
-                            className='GeoTargeting__group-remove'
-                            onClick={component._removeGroup.bind(component, grouped[group].map(({ id }) => id))}>
-                            ×
-                          </a>
-                        </div>
-                        <ul className='GeoTargeting__target-group-items list-unstyled'>
-                          {
-                            grouped[group].map(target => {
-                              return (
-                                <li key={ target.id } className='GeoTargeting__target'>
-                                  <span className={classNames({
-                                    'GeoTargeting__icon icon': true,
-                                    'icon-upvote icon-orangered': includeLocations.has(target.id),
-                                    'icon-downvote icon-periwinkle': excludeLocations.has(target.id),
-                                  })}/>
-                                  { target.name }
-                                  <a
-                                    href='javascript: void 0;'
-                                    className='GeoTargeting__target-remove'
-                                    onClick={component._removeTarget.bind(component, target)}>
-                                    ×
-                                  </a>
-                                </li>
-                              );
-                            })
-                          }
-                        </ul>
-                      </li>
-                    );
-                  })}
-                </ul> : null
-              }
-              <div className='input-group'>
-                <span className='input-group-addon'>
-                  <IncludeExclude include={ this.state.include } onChange={ this._setInclude}/>
-                </span>
-                <Combobox
-                  ref='input'
-                  items={remaining.sort(_sort)}
-                  textField='name'
-                  onSelect={this._addTarget.bind(this)}
-                  filter={_filter}
-                />
-              </div>
-            </div>
+        <div className='form-group'>
+          <label htmlFor='location'>
+            Locations
+            <HelpTooltip>
+              <p>Enter one or more country names, states/regions, or US metro areas you wish to target.</p>
+              <p><a href="#">Learn more</a></p>
+            </HelpTooltip>
+          </label>
+          { 
+            this.renderTargetGroups(grouped)
+          }
+          <div className='input-group'>
+            <span className='input-group-addon'>
+              <IncludeExclude include={ this.state.include } onChange={ this._setInclude}/>
+            </span>
+            <Combobox
+              ref='input'
+              items={remaining.sort(_sort)}
+              textField='name'
+              onSelect={this._addTarget.bind(this)}
+              filter={_filter}
+            />
           </div>
         </div>
       </div>
@@ -206,8 +201,8 @@ const mapStateToProps = (state) => ({
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  onAddLocation: (id, options) => dispatch(unsavedActions.addLocation(id, options)),
-  onRemoveLocation: (id) => dispatch(unsavedActions.removeLocation(id)),
+  onAddTargets: (ids, options) => dispatch(unsavedActions.addLocations(ids, options)),
+  onRemoveTargets: (ids) => dispatch(unsavedActions.removeLocations(ids)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(GeoTargeting);

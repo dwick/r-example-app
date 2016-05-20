@@ -1,0 +1,64 @@
+@import (reference) '~less/variables.less';
+
+.Targeting {
+  &__target-list {
+    background: @input-bg;
+    border: 1px solid @input-border;
+    border-bottom: 0;
+    margin-bottom: 0;
+
+    .Targeting__target-list {
+      border: none;
+    }
+  }
+
+  &__target-remove,
+  &__target-group-remove {
+    color: @gray;
+    float: right;
+    font-weight: normal;
+    display: none;
+
+    &:hover,
+    &:focus,
+    &:active {
+      color: darken(@gray, 5%);
+    }
+  }
+
+  &__target:hover .Targeting__target-remove {
+    display: block;
+  }
+
+  &__target-group {
+
+  }
+
+  &__target-group-title {
+    color: #90949c;
+  }
+
+  &__target-group-remove {
+
+  }
+
+  &__target-group-title,
+  &__target {
+    display: block;
+    width: 100%;
+    height: @input-height-base;
+    padding: @padding-base-vertical @padding-base-horizontal;
+  }
+
+  &__target-group-active {
+    .Targeting__target-group-remove {
+      display: block;
+    }
+  }
+
+  &__target-group-active,
+  &__target-group-active &__target-list,
+  &__target:hover {
+    background: @gray-lighter;
+  }
+}
