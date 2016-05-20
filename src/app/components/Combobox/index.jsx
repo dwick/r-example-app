@@ -1,4 +1,4 @@
-import './Combobox.less';
+import './styles.less';
 
 import classNames from 'classnames';
 import React from 'react';

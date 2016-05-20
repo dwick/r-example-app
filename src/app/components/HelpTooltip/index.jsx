@@ -1,13 +1,13 @@
 import 'less/icons.less';
 import 'less/icon-font.less';
 
-import './HelpTooltip.less';
+import './styles.less';
 
 import classNames from 'classnames';
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-import Tooltip from 'app/components/Tooltip/Tooltip';
+import Tooltip from 'app/components/Tooltip';
 
 const T = React.PropTypes;
 

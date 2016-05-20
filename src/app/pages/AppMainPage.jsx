@@ -1,10 +1,10 @@
 import React from 'react';
 import { PageSelector, Page } from '@r/platform/page';
 
-import LandingPage from 'app/pages/LandingPage/LandingPage';
-import CreateCampaign from 'app/pages/CreateCampaign/CreateCampaign';
-import Dashboard from 'app/pages/Dashboard/Dashboard';
-import Login from 'app/pages/Login/Login';
+import LandingPage from 'app/pages/LandingPage';
+import CreateCampaign from 'app/pages/CreateCampaign';
+import Dashboard from 'app/pages/Dashboard';
+import Login from 'app/pages/Login';
 
 import routes from 'app/router/routes';
 

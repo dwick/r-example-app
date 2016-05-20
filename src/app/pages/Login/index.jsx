@@ -1,7 +1,7 @@
 import 'less/buttons.less';
 import 'less/forms.less';
 
-import './Login.less';
+import './styles.less';
 
 import React from 'react';
 import { connect } from 'react-redux';

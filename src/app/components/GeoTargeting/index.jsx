@@ -4,18 +4,17 @@ import 'less/caret.less';
 import 'less/forms.less';
 import 'less/grid.less';
 
-import './GeoTargeting.less';
+import './styles.less';
 
 import classNames from 'classnames';
 import { connect } from 'react-redux';
 import React from 'react';
 
-import Combobox from 'app/components/Combobox/Combobox';
-import HelpTooltip from 'app/components/HelpTooltip/HelpTooltip';
-import IncludeExclude from 'app/components/IncludeExclude/IncludeExclude';
-import { TargetList, Target, TargetGroup, TargetGroupTitle } from 'app/components/Targeting/Targeting';
+import Combobox from 'app/components/Combobox';
+import HelpTooltip from 'app/components/HelpTooltip';
+import IncludeExclude from 'app/components/IncludeExclude';
+import { TargetList, Target, TargetGroup, TargetGroupTitle } from 'app/components/Targeting';
 import * as regexUtils from 'lib/regex';
-import propTypes from 'lib/propTypes';
 import * as unsavedActions from 'app/actions/unsaved';
 
 function _sort(a, b) {

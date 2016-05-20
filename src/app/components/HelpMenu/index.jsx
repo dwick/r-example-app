@@ -8,7 +8,7 @@ import {
   Dropdown,
   DropdownMenu,
   DropdownMenuItem,
-} from 'app/components/Dropdown/Dropdown';
+} from 'app/components/Dropdown';
 
 const T = React.PropTypes;
 

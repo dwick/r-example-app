@@ -3,15 +3,15 @@ import 'less/grid.less';
 import 'less/navs.less';
 import 'less/navbar.less';
 
-import './Header.less';
+import './styles.less';
 
 import classNames from 'classnames';
 import React from 'react';
 import { Anchor } from '@r/platform/components';
 
-import HelpMenu from 'app/components/HelpMenu/HelpMenu';
-import Logo from 'app/components/Logo/Logo';
-import Logout from 'app/components/Logout/Logout';
+import HelpMenu from 'app/components/HelpMenu';
+import Logo from 'app/components/Logo';
+import Logout from 'app/components/Logout';
 import routes from 'app/router/routes';
 
 const T = React.PropTypes;

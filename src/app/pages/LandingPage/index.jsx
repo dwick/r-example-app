@@ -1,6 +1,6 @@
 import 'less/buttons.less';
 
-import './LandingPage.less';
+import './styles.less';
 
 import React from 'react';
 import routes from 'app/router/routes';

@@ -1,7 +1,7 @@
 import React from 'react';
 
-import GeoTargeting from 'app/components/GeoTargeting/GeoTargeting';
-import LanguageTargeting from 'app/components/LanguageTargeting/LanguageTargeting';
+import GeoTargeting from 'app/components/GeoTargeting';
+import LanguageTargeting from 'app/components/LanguageTargeting';
 
 const T = React.PropTypes;
 

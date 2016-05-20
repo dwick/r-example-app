@@ -2,7 +2,7 @@ import 'less/caret.less';
 import 'less/icons.less';
 import 'less/icon-font.less';
 
-import './IncludeExclude.less';
+import './styles.less';
 
 import classNames from 'classnames';
 import React from 'react';
@@ -11,7 +11,7 @@ import {
   Dropdown,
   DropdownMenu,
   DropdownMenuItem,
-} from 'app/components/Dropdown/Dropdown';
+} from 'app/components/Dropdown';
 
 const T = React.PropTypes;
 const INCLUDE_LABEL = 'include';

@@ -1,5 +1,6 @@
-import './Logout.less';
 import 'less/buttons.less';
+
+import './styles.less';
 
 import classNames from 'classnames';
 import React from 'react';

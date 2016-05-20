@@ -5,7 +5,7 @@ import { createSelector } from 'reselect';
 import { UrlSync } from '@r/platform/components';
 
 import { AppMainPage } from 'app/pages/AppMainPage';
-import Header from 'app/components/Header/Header';
+import Header from 'app/components/Header';
 
 const T = React.PropTypes;
 

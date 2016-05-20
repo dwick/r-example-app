@@ -4,7 +4,7 @@ import 'less/caret.less';
 import 'less/forms.less';
 import 'less/grid.less';
 
-import './LanguageTargeting.less';
+import './styles.less';
 
 import classNames from 'classnames';
 import { connect } from 'react-redux';
@@ -12,9 +12,9 @@ import React from 'react';
 
 import LANGS from './langauges';
 
-import Combobox from 'app/components/Combobox/Combobox';
-import HelpTooltip from 'app/components/HelpTooltip/HelpTooltip';
-import { TargetList, Target, TargetGroup, TargetGroupTitle } from 'app/components/Targeting/Targeting';
+import Combobox from 'app/components/Combobox';
+import HelpTooltip from 'app/components/HelpTooltip';
+import { TargetList, Target, TargetGroup, TargetGroupTitle } from 'app/components/Targeting';
 import * as regexUtils from 'lib/regex';
 import * as unsavedActions from 'app/actions/unsaved';
 
