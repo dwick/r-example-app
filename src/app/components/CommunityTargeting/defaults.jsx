@@ -1,0 +1,148 @@
+export default [{
+  id: 4594313,
+  name: 'gadgets',
+}, {
+  id: 4594318,
+  name: 'sports',
+}, {
+  id: 4594323,
+  name: 'gaming',
+}, {
+  id: 4594350,
+  name: 'pics',
+}, {
+  id: 4594359,
+  name: 'worldnews',
+}, {
+  id: 4594370,
+  name: 'videos',
+}, {
+  id: 4594374,
+  name: 'AskReddit',
+}, {
+  id: 4594380,
+  name: 'aww',
+}, {
+  id: 4594386,
+  name: 'Music',
+}, {
+  id: 4594431,
+  name: 'funny',
+}, {
+  id: 4594449,
+  name: 'news',
+}, {
+  id: 4594456,
+  name: 'movies',
+}, {
+  id: 4594473,
+  name: 'blog',
+}, {
+  id: 4594482,
+  name: 'books',
+}, {
+  id: 4594503,
+  name: 'history',
+}, {
+  id: 4594505,
+  name: 'food',
+}, {
+  id: 4594511,
+  name: 'philosophy',
+}, {
+  id: 4594550,
+  name: 'television',
+}, {
+  id: 4594574,
+  name: 'Jokes',
+}, {
+  id: 4594582,
+  name: 'Art',
+}, {
+  id: 4594585,
+  name: 'DIY',
+}, {
+  id: 4594615,
+  name: 'space',
+}, {
+  id: 4595093,
+  name: 'Documentaries',
+}, {
+  id: 4600958,
+  name: 'askscience',
+}, {
+  id: 4603168,
+  name: 'nottheonion',
+}, {
+  id: 4606680,
+  name: 'todayilearned',
+}, {
+  id: 4609642,
+  name: 'personalfinance',
+}, {
+  id: 4610057,
+  name: 'gifs',
+}, {
+  id: 4616350,
+  name: 'listentothis',
+}, {
+  id: 4618050,
+  name: 'IAmA',
+}, {
+  id: 4619611,
+  name: 'announcements',
+}, {
+  id: 4622249,
+  name: 'TwoXChromosomes',
+}, {
+  id: 4632421,
+  name: 'creepy',
+}, {
+  id: 4647613,
+  name: 'nosleep',
+}, {
+  id: 4648029,
+  name: 'GetMotivated',
+}, {
+  id: 4670327,
+  name: 'WritingPrompts',
+}, {
+  id: 4672970,
+  name: 'LifeProTips',
+}, {
+  id: 4680795,
+  name: 'EarthPorn',
+}, {
+  id: 4697437,
+  name: 'explainlikeimfive',
+}, {
+  id: 4712208,
+  name: 'Showerthoughts',
+}, {
+  id: 4722180,
+  name: 'Futurology',
+}, {
+  id: 4730866,
+  name: 'photoshopbattles',
+}, {
+  id: 4735745,
+  name: 'mildlyinteresting',
+}, {
+  id: 4738505,
+  name: 'dataisbeautiful',
+}, {
+  id: 4743505,
+  name: 'tifu',
+}, {
+  id: 4756763,
+  name: 'OldSchoolCool',
+}, {
+  id: 4763854,
+  name: 'UpliftingNews',
+}, {
+  id: 4786410,
+  name: 'InternetIsBeautiful',
+}, {
+  id: 1058648,
+  name: 'science',
+}]
