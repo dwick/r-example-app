@@ -1,4 +1,3 @@
-import 'less/variables.less';
 import 'less/input-groups.less';
 import 'less/buttons.less';
 import 'less/caret.less';
@@ -11,11 +10,11 @@ import classNames from 'classnames';
 import { connect } from 'react-redux';
 import React from 'react';
 
-import LANGS from './langauges';
+import COLLECTIONS from './collections';
 
 import Combobox from 'app/components/Combobox';
 import HelpTooltip from 'app/components/HelpTooltip';
-import { TargetList, Target, TargetGroup, TargetGroupTitle } from 'app/components/Targeting';
+import { TargetList, Target, TargetIcon, TargetGroup, TargetGroupTitle } from 'app/components/Targeting';
 import * as regexUtils from 'lib/regex';
 import * as unsavedActions from 'app/actions/unsaved';
 
@@ -31,19 +30,20 @@ const _sort = (a, b) => {
 
 const T = React.PropTypes;
 
-export default class LanguageTargeting extends React.Component {
+export default class InterestTargeting extends React.Component {
   static propTypes = {
     available: T.arrayOf(T.shape({
-      id: T.string.isRequired,
       name: T.string.isRequired,
+      description: T.string.isRequired,
+      over18: T.bool.isRequired,
     })).isRequired,
-    languages: T.instanceOf(Set).isRequired,
+    interests: T.instanceOf(Set).isRequired,
     onAddTargets: T.func.isRequired,
     onRemoveTargets: T.func.isRequired,
   };
 
   static defaultProps = {
-    available: LANGS,
+    available: COLLECTIONS,
   }
 
   constructor(props) {
@@ -59,7 +59,7 @@ export default class LanguageTargeting extends React.Component {
   }
 
   _addTarget(target) {
-    this.props.onAddTargets(target.id);
+    this.props.onAddTargets(target.name);
     this.refs.input.clear();
   }
 
@@ -74,10 +74,15 @@ export default class LanguageTargeting extends React.Component {
           targets.sort(_sort).map(target => {
             return (
               <Target
-                key={ target.id }
-                onRemove={ this._removeTargets.bind(this, target.id) }
+                key={ target.name }
+                onRemove={ this._removeTargets.bind(this, target.name) }
               >
                 { target.name }
+                {
+                  target.over18 ?
+                    <TargetIcon className="icon-nsfw" title="nsfw" /> :
+                    null
+                }
               </Target>
             );
           })
@@ -87,23 +92,23 @@ export default class LanguageTargeting extends React.Component {
   }
 
   render () {
-    const { languages, available } = this.props;
-    const remaining = available.filter(target => !languages.has(target.id));
-    const selected = available.filter(target => languages.has(target.id));
+    const { interests, available } = this.props;
+    const remaining = available.filter(target => !interests.has(target.name));
+    const selected = available.filter(target => interests.has(target.name));
 
     return (
       <div className='LanguageTargeting'>
         <div className='form-group'>
-          <label htmlFor='languages'>
-            Languages
+          <label htmlFor='interests'>
+            Interests
             <HelpTooltip>
-              <p>Leaving this blank targets all languages.</p>
+              <p>Collections of subreddits and keywords.</p>
               <p><a href="#">Learn more</a></p>
             </HelpTooltip>
           </label>
           { this.renderTargetList(selected) }
           <Combobox
-            id='languages'
+            id='interests'
             ref='input'
             items={ remaining }
             textField='name'
@@ -117,12 +122,12 @@ export default class LanguageTargeting extends React.Component {
 }
 
 const mapStateToProps = (state) => ({
-  languages: state.languages,
+  interests: state.interests,
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  onAddTargets: ids => dispatch(unsavedActions.addLanguages(ids)),
-  onRemoveTargets: ids => dispatch(unsavedActions.removeLanguages(ids)),
+  onAddTargets: ids => dispatch(unsavedActions.addInterests(ids)),
+  onRemoveTargets: ids => dispatch(unsavedActions.removeInterests(ids)),
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(LanguageTargeting);
+export default connect(mapStateToProps, mapDispatchToProps)(InterestTargeting);
