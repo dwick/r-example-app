@@ -54,3 +54,14 @@ export const Target = (props) => {
     </li>
   );
 }
+
+export const TargetIcon = (props) => {
+  const className = classNames(
+    'Targeting__target-icon',
+    props.className
+  );
+
+  return (
+    <i className={ className } title={ props.title }></i>
+  );
+}
