@@ -12,13 +12,7 @@ const CreateCampaign = (props) => {
       <fieldset>
         <legend>Audience</legend>
         <GeoTargeting />
-      </fieldset>
-      <fieldset>
-        <legend>Communities</legend>
         <CommunityTargeting />
-      </fieldset>
-      <fieldset>
-        <legend>Langauges</legend>
         <LanguageTargeting />
       </fieldset>
     </div>
